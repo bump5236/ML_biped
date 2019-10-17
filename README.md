@@ -1,3 +1,3 @@
 # ML_biped
-# member
+member
 sanada/suzuki/shinagawa
