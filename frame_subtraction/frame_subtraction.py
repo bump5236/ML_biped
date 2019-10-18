@@ -30,7 +30,7 @@ def main():
     # cap = cv2.VideoCapture(0)
 
     # 動画ファイルの読み込み
-    cap = cv2.VideoCapture('movie/a.avi')
+    cap = cv2.VideoCapture('run_foot.avi')
     
     # フレームを3枚取得してグレースケール変換
     # frame1 = cv2.cvtColor(cap.read()[1], cv2.COLOR_RGB2GRAY)
@@ -45,8 +45,8 @@ def main():
     # トリミング
     row_s = 0
     row_g = 480
-    col_s = 80
-    col_g = 500
+    col_s = 0
+    col_g = 580
 
     frm1 = frame1[row_s:row_g, col_s:col_g]
     frm2 = frame2[row_s:row_g, col_s:col_g]
