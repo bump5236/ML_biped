@@ -17,12 +17,21 @@ def frame_sub(img1, img2, img3, th):
     # diff[diff >= th] = 255
     
     #二値化処理
-    diff = cv2.threshold(diff, 10, 255,cv2.THRESH_BINARY)[1]
+    th1 = cv2.threshold(diff, 10, 255,\
+                cv2.THRESH_BINARY)[1]
 
+    # エラー
+    th2 = cv2.adaptiveThreshold(diff, 255, cv2.ADAPTIVE_THRESH_MEAN_C,\
+                cv2.THRESH_BINARY, 5, 2)
+    th3 = cv2.adaptiveThreshold(diff, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
+                cv2.THRESH_BINARY, 5, 2)
+    
     # メディアンフィルタ処理（ゴマ塩ノイズ除去）
-    mask = cv2.medianBlur(diff, 3)
+    mask1 = cv2.medianBlur(th1, 3)
+    mask2 = cv2.medianBlur(th2, 3)
+    mask3 = cv2.medianBlur(th3, 3)
 
-    return  mask
+    return  mask1, mask2, mask3
 
 
 def main():
@@ -55,11 +64,14 @@ def main():
 
     while(cap.isOpened()):
         # フレーム間差分を計算
-        mask = frame_sub(frm1, frm2, frm3, th=20)
+        mask1, mask2, mask3 = frame_sub(frm1, frm2, frm3, th=20)
 
         # 結果を表示
         cv2.imshow("Frame2", frm2)
-        cv2.imshow("Mask", mask)
+        cv2.imshow("Mask", mask1)
+        cv2.imshow("Mask", mask2)
+        cv2.imshow("Mask", mask3)
+
 
         # 3枚のフレームを更新
         frm1 = frm2
