@@ -1,5 +1,5 @@
 # ML_biped
-Applying machine learning to walking and running robots
+In order to apply machine learning to walking and running robots
 
 ### Member
 Sanada/Suzuki/Shinagawa
