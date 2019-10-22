@@ -1,11 +1,5 @@
 # ML_biped
+Applying machine learning to walking and running robots
 
-shineshineshine
-=======
-member
-sanada/suzuki/shinagawa
-
-shinagawa:simulatuion
-
-
-hogehoge
+### Member
+Sanada/Suzuki/Shinagawa
