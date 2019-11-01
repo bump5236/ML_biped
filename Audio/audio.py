@@ -4,6 +4,23 @@ import time
 from scipy import signal
 # import matplotlib.animation as anm
 import matplotlib.pyplot as plt
+import sys
+
+if os.name == 'nt':
+    import msvcrt
+    def getch():
+        return msvcrt.getch().decode()
+else:
+    import sys, tty, termios
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    def getch():
+        try:
+            tty.setraw(sys.stdin.fileno())
+            ch = sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        return ch
 
 class AudioFilter:
     def __init__(self):
@@ -76,9 +93,14 @@ class Monitor:
 
 if __name__ == "__main__":
     # AudioFilterのインスタンスを作る場所
-
     af = AudioFilter()
     moni = Monitor()
+
+    key = getch()
+    if key == 'q':
+        sys.exit()
+    elif key == 's':
+        print('start')
 
     # ストリーミングを始める場所
     af.stream.start_stream()
