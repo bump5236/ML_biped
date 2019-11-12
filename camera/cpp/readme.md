@@ -16,7 +16,7 @@ How to Use
 ---
 On Host PC
 1. ssh接続を行う。(cygwin使ってます)
-`$ ssh xavier@133.68.35.175`
+`$ ssh USER_NAME@IP_ADDR`
 
 2. 所定のディレクトリへ
 `$ cd sanada/work/ML_biped/camera/cpp`
