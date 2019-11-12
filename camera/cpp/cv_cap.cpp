@@ -17,11 +17,11 @@ int main (void)
 	// Settings
     cam.SetExposureTime(1000); //1000 us = 1 ms
 	
-	cam.SetAcquisitionTimingMode('XI_ACQ_TIMING_MODE');
-	cam.SetFrameRate(500);
+	// cam.SetAcquisitionTimingMode("XI_ACQ_TIMING_MODE");
+	cam.SetFrameRate(500.0);
     
-	cam.SetDownsamplingType('XI_DOWNSAMPLING_TYPE');
-	cam.SetDownsampling(2);
+	// cam.SetDownsamplingType("XI_DOWNSAMPLING_TYPE");
+	cam.SetDownsampling(XI_DOWNSAMPLING_VALUE 2);
 
 	cout << "Starting acquisition..." << endl;
     cam.StartAcquisition();
