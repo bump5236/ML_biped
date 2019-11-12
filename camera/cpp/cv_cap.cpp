@@ -17,11 +17,11 @@ int main (void)
 	// Settings
     cam.SetExposureTime(1000); //1000 us = 1 ms
 	
-	cam.SetAcquisitionTimingMode(XI_ACQ_TIMING_MODE AcquisitionTimingMode);
+	cam.SetAcquisitionTimingMode('AcquisitionTimingMode');
 	cam.SetFrameRate(500);
     
-	cam.xiSetParamInt(handle, XI_PRM_DOWNSAMPLING_TYPE, XI_SKIPPING);
-	cam.xiSetParamInt(handle, XI_PRM_DOWNSAMPLING, 2);
+	cam.SetDownsamplingType('XI_SKIPPING');
+	cam.SetDownsampling(2);
 
 	cout << "Starting acquisition..." << endl;
     cam.StartAcquisition();
@@ -37,7 +37,7 @@ int main (void)
 		cout << +cv_mat_image.at<uchar>(0, 0) << endl;
 		// imshow("Image from camera", cv_mat_image);
 		float fps = cam.GetFrameRate();
-		printf("FPS:%d\n", fps);
+		printf("FPS:%f\n", fps);
 	}
 		waitKey(2);
 	}
