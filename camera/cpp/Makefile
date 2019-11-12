@@ -8,7 +8,7 @@ PROGRAM=cv_cap
 all: $(PROGRAM)
 
 $(PROGRAM): xiApiPlusOcv.o cv_cap.o
-	g++ $(OBJECTS) -o cv_cap -lm3api -lopencv_core -lopencv_highgui -lopencv_imgproc -L/usr/local/lib 
+	g++ $(OBJECTS) -o cv_cap -lm3api -lopencv_core -lm `pkg-config --libs opencv` -lopencv_highgui -lopencv_imgproc -L/usr/local/lib 
 
 xiApiPlusOcv.o: xiApiPlusOcv.cpp
 	g++ -c xiApiPlusOcv.cpp -I . -I /usr/local/include/ -g3 -Wall -c -fmessage-length=0
