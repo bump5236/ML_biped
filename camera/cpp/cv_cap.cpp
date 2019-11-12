@@ -31,22 +31,23 @@ int main (void)
 
 	#define EXPECTED_IMAGES 50
 	for (int images=0;images < EXPECTED_IMAGES;images++)
-	{
+		{
 	// Read and convert a frame from the camera
 		Mat cv_mat_image = cam.GetNextImageOcvMat();
 		cout << +cv_mat_image.at<uchar>(0, 0) << endl;
 		// imshow("Image from camera", cv_mat_image);
 		float fps = cam.GetFrameRate();
 		printf("FPS:%f\n", fps);
-	}
-		waitKey(2);
-	}
+		}
+	
+	waitKey(2);
 
     cam.StopAcquisition();
     cam.Close();
 		cout << "Done" << endl;
 		waitKey(1000);
-  }
+	}
+
 	catch(xiAPIplus_Exception& exp)
 	{
 		cout << "Error:" << endl;
