@@ -1,6 +1,4 @@
-========================================================================
-xiApiPlusOcvExample 
-========================================================================
+# xiApiPlusOcvExample 
 
 
 This example contains an OpenCV wrapper for the XiAPI. It is based on a C++ XiAPIplus.
