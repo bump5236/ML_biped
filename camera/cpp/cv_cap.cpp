@@ -20,7 +20,7 @@ int main (void)
 
 		cout << "First pixel value:" << endl;
 		XI_IMG_FORMAT format = cam.GetImageDataFormat();
-		#define EXPECTED_IMAGES 150
+		#define EXPECTED_IMAGES 50
 		for (int images=0;images < EXPECTED_IMAGES;images++)
 		{
       // Read and convert a frame from the camera
@@ -35,47 +35,48 @@ int main (void)
 				case XI_RAW16X4:
 				case XI_RGB16_PLANAR:
 				{
-					cout << cv_mat_image.at<ushort>(0, 0) << endl;
+//					cout << cv_mat_image.at<ushort>(0, 0) << endl;
+                    cout << cv_mat_image << endl;
 					// normalize to 16-bit for proper view
 					Mat norm_cv_mat_image = cv_mat_image.clone();
 					normalize(cv_mat_image, norm_cv_mat_image, 0, 65536, NORM_MINMAX, -1, Mat()); // 0 - 65536, 16 bit unsigned integer range
-					imshow("Image from camera", norm_cv_mat_image);
+//					imshow("Image from camera", norm_cv_mat_image);
 				}
 				break;
 				case XI_RGB24:
 				{
 					cout << cv_mat_image.at<Vec3b>(0, 0) << endl;
-					imshow("Image from camera", cv_mat_image);
+//					imshow("Image from camera", cv_mat_image);
 				}
 				break;
 				case XI_RGB32:
 				{
 					cout << cv_mat_image.at<Vec4b>(0, 0) << endl;
-					imshow("Image from camera", cv_mat_image);
+//					imshow("Image from camera", cv_mat_image);
 				}
 				break;
 				case XI_RGB48:
 				{
 					cout << cv_mat_image.at<Vec3w>(0, 0) << endl;
-					imshow("Image from camera", cv_mat_image);
+//					imshow("Image from camera", cv_mat_image);
 				}
 				break;
 				case XI_RGB64:
 				{
 					cout << cv_mat_image.at<Vec4w>(0, 0) << endl;
-					imshow("Image from camera", cv_mat_image);
+//					imshow("Image from camera", cv_mat_image);
 				}
 				break;
 				case XI_RAW32FLOAT:
 				{
 					cout << cv_mat_image.at<float>(0, 0) << endl;
-					imshow("Image from camera", cv_mat_image);
+//					imshow("Image from camera", cv_mat_image);
 				}
 				break;
 				default:
 				{
 					cout << +cv_mat_image.at<uchar>(0, 0) << endl;
-					imshow("Image from camera", cv_mat_image);
+//					imshow("Image from camera", cv_mat_image);
 				}
 			}
 			waitKey(2);
@@ -97,3 +98,4 @@ int main (void)
 		return -1;
 	}
 	return 0;
+}
