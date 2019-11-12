@@ -39,7 +39,7 @@ int main (void)
  
 	width  = (int)cam.GetWidth();	// フレーム横幅を取得
 	height = (int)cam.GetHeight();	// フレーム縦幅を取得
-	fps    = cam.GetFrameRate();					// フレームレートを取得
+	fps    = 500;    // フレームレートを取得
  
 	// ビデオフォーマットの指定
 	fourcc = cv::VideoWriter::fourcc('H', '2', '6', '4');	// H264  / ファイル拡張子 .avi
@@ -58,7 +58,7 @@ int main (void)
 		// imshow("Image from camera", cv_mat_image);
 //        cout << cv_mat_image << endl;
 		float fps = cam.GetFrameRate();
-		printf("FPS:%f\n", fps);
+        printf("FPS:%f WIDTH:%d HEIGHT:%d\n", fps, width, height);
 		}
     
 	//動画ファイルに画像を出力。
