@@ -23,6 +23,7 @@ On Host PC
 
 3. ファイル編集
 `$ vim FILENAME`
+**注**ssh時はimshow使えません。
 
 4. コンパイル
 `$ make`
