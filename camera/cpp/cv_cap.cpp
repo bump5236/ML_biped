@@ -45,7 +45,7 @@ int main (void)
 	fourcc = cv::VideoWriter::fourcc('H', '2', '6', '4');	// H264  / ファイル拡張子 .avi
 	// 動画ファイルを書き出すためのオブジェクトを宣言する
 	VideoWriter writer;
-	writer.open("out.avi", fourcc, fps, Size(width, height));
+	writer.open("out22.avi", fourcc, fps, Size(width, height));
 
     Mat cv_mat_image;
 	
