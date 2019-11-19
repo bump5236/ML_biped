@@ -3,6 +3,7 @@ import cv2
 import time
 import PIL.Image
 import sys
+import Jetson.GPIO as GPIO
 
 cnt = 0
 #create instance for first connected camera 
@@ -55,6 +56,28 @@ print('Starting data acquisition...')
 cam.start_acquisition()
 
 tmp = 0
+sync = 0
+
+# Pin Definitions
+input_pin = 31  # BCM pin 18, BOARD pin 12
+prev_value = None
+# Pin Setup:
+GPIO.setmode(GPIO.BOARD)  # BCM pin-numbering scheme from Raspberry Pi
+GPIO.setup(input_pin, GPIO.IN)  # set pin as an input pin
+print("Waiting Sync now!")
+print(GPIO.JETSON_INFO)
+while sync == 0:
+    value = GPIO.input(input_pin)
+    if value != prev_value:
+        if value == GPIO.HIGH:
+            value_str = "HIGH"
+        else:
+            value_str = "LOW"
+            sync = 1
+
+        print("Value read from pin {} : {}".format(input_pin, value_str))
+        prev_value = value
+    time.sleep(1)
 
 try:
     print('Starting video. Press CTRL+C to exit.')
@@ -107,6 +130,7 @@ except KeyboardInterrupt:
     pass
 
 rec.release()
+GPIO.cleanup()
 cv2.destroyAllWindows()
 #stop data acquisition
 print('Stopping acquisition...')
